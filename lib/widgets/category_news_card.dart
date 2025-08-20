@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SpecialNewsCard extends StatelessWidget {
-  const SpecialNewsCard({super.key});
+class CategoryNewsCard extends StatelessWidget {
+  const CategoryNewsCard({super.key});
 
   @override
   Widget build(BuildContext context) {
