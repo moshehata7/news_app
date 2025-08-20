@@ -13,19 +13,22 @@ class NewsItemListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: newsList.length,
-        itemBuilder: (context, index) {
-        return AnimationConfiguration.staggeredList(
-        position: index,
-        duration: const Duration(milliseconds: 400),
-        child: SlideAnimation(
-          verticalOffset: 50.0,
-          child: FadeInAnimation(
-            child: NewsItem(news:newsList[index],)),));
-            }
+      child: AnimationLimiter(
+        child: ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: newsList.length,
+          itemBuilder: (context, index) {
+          return AnimationConfiguration.staggeredList(
+          position: index,
+          duration: const Duration(seconds: 1),
+          child: SlideAnimation(
+            verticalOffset: 50.0,
+            child: FadeInAnimation(
+              duration: Duration(seconds:1 ),
+              child: NewsItem(news:newsList[index],)),));
+              }
+        ),
       ),
     );
   }
