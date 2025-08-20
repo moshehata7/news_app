@@ -13,9 +13,9 @@ class NewsItem extends StatelessWidget {
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
         child: Column(
           children: [
-            Image.asset(news.image ??""),
-            Text(news.title!, style: TextStyle(fontSize: 30)),
-            Text(news.subTitle!, style: TextStyle(fontSize: 15)),
+            Image.network(news.image ?? ""),
+            Text(news.title ?? "there is no title", style: TextStyle(fontSize: 30)),
+            Text(news.subTitle ?? "there is no describtion", style: TextStyle(fontSize: 15)),
           ],
         ),
       ),

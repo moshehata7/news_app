@@ -4,8 +4,8 @@ class NewsModel {
   String? subTitle;
 
   NewsModel.fromJson(Map<String, dynamic> json) {
-    image = json["articles"]["urlToImage"];
-    title = json["articles"]["title"];
-    subTitle = json["articles"]["description"];
+    image = json["urlToImage"];
+    title = json["title"];
+    subTitle = json["description"];
   }
 }

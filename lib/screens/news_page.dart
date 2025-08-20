@@ -1,14 +1,9 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/cubit/news_cubit.dart';
-import 'package:news_app/data/cubit/news_cubit.dart';
 import 'package:news_app/models/news_model.dart';
-import 'package:news_app/services/news_services.dart';
-import 'package:news_app/widgets/news_item.dart';
 import 'package:news_app/widgets/news_item_list_view.dart';
 import 'package:news_app/widgets/category_news_card_list_views.dart';
-import 'package:news_app/cubit/news_cubit.dart';
 
 class NewsPage extends StatefulWidget {
   const NewsPage({super.key});
@@ -20,8 +15,8 @@ class NewsPage extends StatefulWidget {
 class _NewsPageState extends State<NewsPage> {
   @override
   void initState() {
-  
     super.initState();
+    BlocProvider.of<NewsCubit>(context).getNews();
   }
 
   @override
@@ -36,11 +31,23 @@ class _NewsPageState extends State<NewsPage> {
           ],
         ),
       ),
-      body: ListView(
-        children: [
-          CategoryNewsCardListViews(),
-          NewsItemListView(newsList: []),
-        ],
+      body: BlocBuilder<NewsCubit, NewsState>(
+        builder: (context, state) {
+          if (state is NewsLoading) {
+            return Center(child: CircularProgressIndicator());
+          } else if (state is NewsSuccess) {
+            return ListView(
+              children: [
+                CategoryNewsCardListViews(),
+                NewsItemListView(newsList: state.newsList),
+              ],
+            );
+          } else if (state is NewsFailure) {
+            return Text("Error ${state.errorMessage}");
+          } else {
+            return Text("Error.... ");
+          }
+        },
       ),
     );
   }

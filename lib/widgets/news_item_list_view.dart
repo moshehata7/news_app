@@ -3,7 +3,7 @@ import 'package:news_app/models/news_model.dart';
 import 'package:news_app/widgets/news_item.dart';
 
 class NewsItemListView extends StatelessWidget {
-   NewsItemListView({super.key, required this.newsList, });
+   NewsItemListView({super.key, required this.newsList });
   final List<NewsModel> newsList;
   
 
