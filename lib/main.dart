@@ -7,26 +7,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/services/news_services.dart';
 
 void main() {
-
-  runApp(
-     NewsApp());
+  runApp(NewsApp());
 }
 
 class NewsApp extends StatelessWidget {
-   NewsApp({super.key});
-   final dio = Dio(); // Dio instance
+  NewsApp({super.key});
+  final dio = Dio(); // Dio instance
   late final newsServices = NewsServices(dio); // service
   late final newsRepo = NewsRepo(newsServices); // repo
 
-  
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return BlocProvider(
+      create: (context) => NewsCubit(newsRepo),
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: BlocProvider(
-          create: (context) => NewsCubit(newsRepo),
-          child: NewsPage()),
-         theme: ThemeData(brightness: Brightness.dark));
-    
+        home: NewsPage(),
+
+        theme: ThemeData(brightness: Brightness.dark),
+      ),
+    );
   }
 }

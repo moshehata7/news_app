@@ -6,11 +6,11 @@ class CategoryNewsCardListViews extends StatelessWidget {
    CategoryNewsCardListViews({super.key});
   final List <CategoryModel> categoryList = [
    CategoryModel(image: "assets/images/0_YdpLnadyR0p-rtYH.jpg"),
-   CategoryModel(image: "assets/images/download.jpg", title: "Business"),
-   CategoryModel(image: "assets/images/entertaiment.avif", title: "Entertaiment"),
-   CategoryModel(image: "assets/images/health.avif", title: "Health"),
-   CategoryModel(image: "assets/images/science.avif", title: "Scince"),
-   CategoryModel(image: "assets/images/technology.jpeg", title: "Technology"),
+   CategoryModel(image: "assets/images/download.jpg", title: "business"),
+   CategoryModel(image: "assets/images/entertaiment.avif", title: "entertainment"),
+   CategoryModel(image: "assets/images/health.avif", title: "health"),
+   CategoryModel(image: "assets/images/science.avif", title: "science"),
+   CategoryModel(image: "assets/images/technology.jpeg", title: "technology"),
   ];
   @override
   Widget build(BuildContext context) {
