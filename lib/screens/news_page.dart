@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/widgets/news_item.dart';
 import 'package:news_app/widgets/news_item_list_view.dart';
+import 'package:news_app/widgets/special_news_card_list_views.dart';
 
 class NewsPage extends StatelessWidget {
   const NewsPage({super.key});
@@ -17,7 +18,11 @@ class NewsPage extends StatelessWidget {
           ],
         ),
       ),
-      body: NewsItemListView()
+      body: ListView(
+        children :[
+        SpecialNewsCardListViews(),
+        NewsItemListView(),
+      ])
     );
   }
 }
