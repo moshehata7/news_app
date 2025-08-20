@@ -36,11 +36,14 @@ class _NewsPageState extends State<NewsPage> {
           if (state is NewsLoading) {
             return Center(child: CircularProgressIndicator());
           } else if (state is NewsSuccess) {
-            return ListView(
-              children: [
-                CategoryNewsCardListViews(),
-                NewsItemListView(newsList: state.newsList),
-              ],
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView(
+                children: [
+                  CategoryNewsCardListViews(),
+                  NewsItemListView(newsList: state.newsList),
+                ],
+              ),
             );
           } else if (state is NewsFailure) {
             return Text("Error ${state.errorMessage}");

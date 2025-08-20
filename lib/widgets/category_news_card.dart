@@ -30,7 +30,10 @@ class CategoryNewsCard extends StatelessWidget {
           width: 200,
           height: 150,
           decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage(category.image)),
+            borderRadius: BorderRadius.circular(8),
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage(category.image)),
           ),
         ),
       ),

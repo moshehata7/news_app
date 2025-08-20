@@ -1,4 +1,6 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:news_app/models/news_model.dart';
 import 'package:news_app/widgets/news_item.dart';
 
@@ -15,7 +17,15 @@ class NewsItemListView extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         itemCount: newsList.length,
-        itemBuilder: (context, index) => NewsItem(news:newsList[index],),
+        itemBuilder: (context, index) {
+        return AnimationConfiguration.staggeredList(
+        position: index,
+        duration: const Duration(milliseconds: 400),
+        child: SlideAnimation(
+          verticalOffset: 50.0,
+          child: FadeInAnimation(
+            child: NewsItem(news:newsList[index],)),));
+            }
       ),
     );
   }

@@ -24,7 +24,8 @@ class NewsApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: NewsPage(),
 
-        theme: ThemeData(brightness: Brightness.dark),
+        theme: ThemeData(
+          brightness: Brightness.dark),
       ),
     );
   }

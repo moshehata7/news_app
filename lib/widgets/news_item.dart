@@ -8,24 +8,29 @@ class NewsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-        child: Column(
-          children: [
-            CachedNetworkImage(
-              imageUrl: news.image.isNotEmpty
-                  ? news.image
-                  : "https://via.placeholder.com/150",
-              placeholder: (context, url) => CircularProgressIndicator(),
-              errorWidget: (context, url, error) =>
-                  Icon(Icons.broken_image, size: 100),
-            ),
-            Text(maxLines:2, 
-             news.title, style: TextStyle( fontSize: 25)),
-            Text(news.subTitle, style: TextStyle(fontSize: 13)),
-          ],
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      elevation: 4,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+          child: Column(
+            children: [
+              CachedNetworkImage(
+                fit: BoxFit.cover,
+                imageUrl: news.image.isNotEmpty
+                    ? news.image
+                    : "https://via.placeholder.com/150",
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) =>
+                    Icon(Icons.broken_image, size: 100),
+              ),
+              Text(maxLines:2, 
+               news.title, style: TextStyle(fontFamily:"Roboto Slab" , fontSize: 25)),
+              Text(news.subTitle, style: TextStyle( fontSize: 13)),
+            ],
+          ),
         ),
       ),
     );
