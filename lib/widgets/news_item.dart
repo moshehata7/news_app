@@ -22,8 +22,9 @@ class NewsItem extends StatelessWidget {
               errorWidget: (context, url, error) =>
                   Icon(Icons.broken_image, size: 100),
             ),
-            Text(news.title, style: TextStyle(fontSize: 30)),
-            Text(news.subTitle, style: TextStyle(fontSize: 15)),
+            Text(maxLines:2, 
+             news.title, style: TextStyle( fontSize: 25)),
+            Text(news.subTitle, style: TextStyle(fontSize: 13)),
           ],
         ),
       ),
