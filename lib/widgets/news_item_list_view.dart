@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/models/news_model.dart';
 import 'package:news_app/widgets/news_item.dart';
 
 class NewsItemListView extends StatelessWidget {
-  const NewsItemListView({super.key});
+   NewsItemListView({super.key, required this.newsList, });
+  final List<NewsModel> newsList;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +14,8 @@ class NewsItemListView extends StatelessWidget {
       child: ListView.builder(
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: 5,
-        itemBuilder: (context, index) => NewsItem(),
+        itemCount: newsList.length,
+        itemBuilder: (context, index) => NewsItem(news:newsList[index],),
       ),
     );
   }
