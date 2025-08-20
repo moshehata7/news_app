@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/news_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class NewsItem extends StatelessWidget {
   const NewsItem({super.key, required this.news});
@@ -13,9 +14,16 @@ class NewsItem extends StatelessWidget {
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
         child: Column(
           children: [
-            Image.network(news.image ?? ""),
-            Text(news.title ?? "there is no title", style: TextStyle(fontSize: 30)),
-            Text(news.subTitle ?? "there is no describtion", style: TextStyle(fontSize: 15)),
+            CachedNetworkImage(
+              imageUrl: news.image.isNotEmpty
+                  ? news.image
+                  : "https://via.placeholder.com/150",
+              placeholder: (context, url) => CircularProgressIndicator(),
+              errorWidget: (context, url, error) =>
+                  Icon(Icons.broken_image, size: 100),
+            ),
+            Text(news.title, style: TextStyle(fontSize: 30)),
+            Text(news.subTitle, style: TextStyle(fontSize: 15)),
           ],
         ),
       ),

@@ -1,11 +1,14 @@
 class NewsModel {
-  String? image;
-  String? title;
-  String? subTitle;
+  final String image;
+  final String title;
+  final String subTitle;
+  NewsModel({required this.image, required this.title, required this.subTitle});
 
-  NewsModel.fromJson(Map<String, dynamic> json) {
-    image = json["urlToImage"];
-    title = json["title"];
-    subTitle = json["description"];
+  factory NewsModel.fromJson(Map<String, dynamic> json) {
+    return NewsModel(
+      image: json["urlToImage"] ?? "",
+      title: json["title"] ?? "",
+      subTitle: json["description"]?? "",
+    );
   }
 }
